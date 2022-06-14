@@ -37,13 +37,15 @@ function App() {
 
       <h1>YouTube Video Summariser</h1>
       <TextField id="outlined-basic" label="YouTube Link" variant="outlined" onChange={Input}/>
+
+      <textarea rows="50" cols="50" id = "Transcripts" value={tran}>
+        {tran}
+      </textarea >
+
       <textarea rows="50" cols="50" id = "Message"value={sum}>
         {sum}
       </textarea >
 
-      <textarea rows="50" cols="50" id = "Transcripts"value={sum}>
-        {sum}
-      </textarea >
     </div>
   )
 }
