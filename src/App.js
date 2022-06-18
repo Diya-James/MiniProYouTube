@@ -1,16 +1,16 @@
 import React , {useEffect , useState}from 'react'
 import TextField from '@mui/material/TextField';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css"
 
 function App() {
 
   
   const [text, settext] = useState('')
-  const [sum , setsum] = useState('')
-  const [tran , settran] = useState('')
+  const [sum , setsum] = useState('Loading.......')
+  const [tran , settran] = useState('Loading......')
 
   useEffect(() => {
-    getData();
   }, []);
 
   const Input = (e) => 
@@ -19,12 +19,20 @@ function App() {
     const value = e.target.value;
     console.log(name , value);
     settext(value)
-
+    console.log(value)
   }
 
-  const getData = async() => {
+  
+  const handleSubmit = (e) => {
+      const result = text;
+      e.preventDefault();
+      getData(result);
+      console.log("The Result : " , result)
+  }
 
-    const response = await fetch('https://ytvideosummariser.herokuapp.com/api?url=https://www.youtube.com/watch?v=bz7yYu_w2HY' );
+  const getData = async(result) => {
+
+    const response = await fetch(`https://ytvideosummariser.herokuapp.com/api?url=${result}` );
     // console.log(response)
     const data = await response.json();
     console.log(data)
@@ -33,10 +41,12 @@ function App() {
   };
 
   return (
-    <div className="App">
+      <div className="App">
 
       <h1>YouTube Video Summariser</h1>
+      <form onSubmit = {e => { handleSubmit(e) }}>
       <TextField id="outlined-basic" label="YouTube Link" variant="outlined" onChange={Input}/>
+      </form>
 
       <textarea rows="50" cols="50" id = "Transcripts" value={tran}>
         {tran}
@@ -47,6 +57,7 @@ function App() {
       </textarea >
 
     </div>
+
   )
 }
 
