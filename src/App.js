@@ -1,11 +1,12 @@
 import React , {useEffect , useState}from 'react'
 import TextField from '@mui/material/TextField';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route , useNavigate  } from "react-router-dom";
 import "./App.css"
+import Summary from './Summary';
 
 function App() {
 
-  
+  const navigate = useNavigate();
   const [text, settext] = useState('')
   const [sum , setsum] = useState('Loading.......')
   const [tran , settran] = useState('Loading......')
@@ -33,7 +34,6 @@ function App() {
   const getData = async(result) => {
 
     const response = await fetch(`https://ytvideosummariser.herokuapp.com/api?url=${result}` );
-    // console.log(response)
     const data = await response.json();
     console.log(data)
     setsum(data.Message)
@@ -48,13 +48,15 @@ function App() {
       <TextField id="outlined-basic" label="YouTube Link" variant="outlined" onChange={Input}/>
       </form>
 
-      <textarea rows="50" cols="50" id = "Transcripts" value={tran}>
+      <button onClick = {() => { navigate("./summary" , { state : {sum : sum}}) } }> Summary</button>
+      <button onClick = {() => { navigate("/transcripts" , { state : {tran : tran}})}}> Transcripts</button>
+      {/* <textarea rows="50" cols="50" id = "Transcripts" value={tran}>
         {tran}
       </textarea >
 
       <textarea rows="50" cols="50" id = "Message"value={sum}>
         {sum}
-      </textarea >
+      </textarea > */}
 
     </div>
 
