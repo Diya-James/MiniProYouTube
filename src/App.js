@@ -5,13 +5,13 @@ import "./App.css"
 import Summary from './Summary';
 
 function App() {
-
   const navigate = useNavigate();
   const [text, settext] = useState('')
   const [sum , setsum] = useState('Loading.......')
   const [tran , settran] = useState('Loading......')
 
   useEffect(() => {
+    
   }, []);
 
   const Input = (e) => 
