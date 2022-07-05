@@ -1,7 +1,13 @@
 .App {
   text-align: center;
+  padding:250px 0;
+  font-family: "Merriweather";
+  box-sizing : border-box;
 }
-
+body{
+  /* background-image: url(bg1.jpg); */
+  background-color: #BDE6F1;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +42,64 @@
     transform: rotate(360deg);
   }
 }
+
+.button{
+  height:3rem;
+  padding:0 2rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(-45deg, #9925ea, #338aff, #9925ea);
+  background-size:500%;
+  background-position:90% 0;
+  color : #ffffff;
+  transition: background 0.8s;
+  cursor: pointer;
+  margin-right: 5px;
+  margin:15px;
+  border: 1px;
+}
+
+.button:hover{
+  background-position: 185% 50%;
+}
+
+.wrapper{
+  position: relative;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.textbox{
+  width:600px;
+  height:2.5rem;
+  padding:0 0.5rem;
+  border-radius: 0.25rem;
+
+}
+.textbox:focus{
+  border: 1px solid #00b86c;
+}
+
+.validation{
+  position: absolute;
+  top:50%;
+  right:0.5rem;
+  transform: translate(5rem, -50%);
+  opacity: 0;
+  
+  transition: all 0.35s;
+
+}
+
+input:valid {border-color : #55d688; }
+input:invalid {border-color: #fd4444; }
+input:invalid ~ .validation{opacity:1;
+  transform: translate(0,-40%);}
+
+  .Heading{
+    letter-spacing: 1.5px;
+    font-size: 250%;
+    display: absolute;
+    text-align: center;
+    font-family: "sans-serif","Helvetica", "Arial" ;
+    color: #ee1f1f
+  }
