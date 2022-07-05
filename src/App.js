@@ -56,18 +56,7 @@ function App() {
         }}
       >
         {" "}
-        Summary
-      </button>
-      <button
-        className="button"
-        onClick={() => {
-          {
-            navigate("/transcripts", { state: { text: text } });
-          }
-        }}
-      >
-        {" "}
-        Transcripts
+        Get Summary
       </button>
     </div>
   );
