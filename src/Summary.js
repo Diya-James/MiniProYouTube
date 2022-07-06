@@ -6,17 +6,25 @@ function Summary() {
   const location = useLocation();
   const [sum, setsum] = useState("Loading.......");
   const [tran, settran] = useState("Loading......");
-  const [rangeval, setRangeval] = useState(null);
+  const [rangeval, setRangeval] = useState(1.7);
+  const [rangevalp, setRangevalp] = useState(2);
   const msg = new SpeechSynthesisUtterance();
 
   const speechHandler = (msg) => {
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
     }
-    msg.pitch = 2.5;
+    var voices
+    setTimeout(() => {
+      voices = window.speechSynthesis.getVoices();
+    }, 50);
+
+    msg.pitch = rangevalp;
     msg.rate = rangeval;
     //msg.voice = voices.filter(function(voice) { return voice.name == 'Microsoft Zira Desktop - English (United States)'; })[0];
     msg.text = sum;
+    //msg.voice = voices[3]
+    //msg.voice = voices.filter(function(voice) { return voice.name == 'Microsoft Zira Desktop - English (United States)'; })[0];
     window.speechSynthesis.speak(msg);
   };
 
@@ -28,9 +36,6 @@ function Summary() {
     window.speechSynthesis.resume();
   };
 
-  setTimeout(() => {
-    console.log(window.speechSynthesis.getVoices());
-  }, 50);
 
   const getData = async (result) => {
     const response = await fetch(
@@ -79,11 +84,22 @@ function Summary() {
           onChange={(event) => setRangeval(event.target.value)}
           min="0.5"
           max="3"
+          defaultValue="1.7"
+          step="0.1"
+        />
+      </div>
+      <div id="rate-control">
+        <label for="rate">Pitch:</label>
+        <input
+          id="typeinp"
+          type="range"
+          onChange={(event) => setRangevalp(event.target.value)}
+          min="0.5"
+          max="3"
           defaultValue="2"
           step="0.1"
         />
       </div>
-
       <button className="btn" onClick={() => speechHandler(msg)}>
         <span className="btn-content">Speak</span>
       </button>
