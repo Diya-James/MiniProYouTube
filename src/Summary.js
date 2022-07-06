@@ -83,14 +83,18 @@ function Summary() {
           step="0.1"
         />
       </div>
-      <br />
-      <button onClick={() => speechHandler(msg)}>SPEAK</button>
-      <br />
-      <button onClick={() => speechPause()}>PAUSE</button>
-      <br />
-      <button onClick={() => speechResume()}>RESUME</button>
-      <br />
-      <br />
+
+      <button className="btn" onClick={() => speechHandler(msg)}>
+        <span className="btn-content">Speak</span>
+      </button>
+
+      <button className="btn" onClick={() => speechPause()}>
+        <span className="btn-content">Pause</span>
+      </button>
+
+      <button className="btn" onClick={() => speechResume()}>
+        <span className="btn-content">Resume</span>
+      </button>
     </div>
   );
 }

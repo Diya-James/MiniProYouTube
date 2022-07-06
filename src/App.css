@@ -98,7 +98,7 @@ input:invalid ~ .validation{opacity:1;
   .Heading{
     letter-spacing: 1.5px;
     font-size: 250%;
-    display: absolute;
+    display: inline-block;
     text-align: center;
     font-family: "sans-serif","Helvetica", "Arial" ;
     color: #ee1f1f
