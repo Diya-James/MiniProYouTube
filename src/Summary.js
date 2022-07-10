@@ -6,6 +6,7 @@ function Summary() {
   const location = useLocation();
   const [sum, setsum] = useState("Loading.......");
   const [tran, settran] = useState("Loading......");
+  const [translation, settranslation] = useState("Loading......");
   const [rangeval, setRangeval] = useState(1.7);
   const [rangevalp, setRangevalp] = useState(2);
   const msg = new SpeechSynthesisUtterance();
@@ -42,12 +43,29 @@ function Summary() {
       `https://ytvideosummariser.herokuapp.com/api?url=${result}`
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     setsum(data.Message);
     settran(data.Transcripts);
+    try{
+      const response1 = await fetch(
+        `https://yttranslation.herokuapp.com/api?dest=es&text=${sum}`,
+        {
+          mode:"no-cors",
+        }
+      );
+      const data1 = await response1.json();
+      console.log(data1.Translated);
+      settranslation(data1.Translated)
+    }
+    catch{
+      console.error();
+    }
   };
 
+
+
   getData(location.state.text);
+  
 
   return (
     <div>
