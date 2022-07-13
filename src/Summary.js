@@ -48,13 +48,10 @@ function Summary() {
     settran(data.Transcripts);
     try{
       const response1 = await fetch(
-        `https://yttranslation.herokuapp.com/api?dest=es&text=${sum}`,
-        {
-          mode:"no-cors",
-        }
+        `https://yttranslation.herokuapp.com/api?dest=es&text=${sum}`
       );
       const data1 = await response1.json();
-      console.log(data1.Translated);
+      console.log(data1.Tranlated)
       settranslation(data1.Translated)
     }
     catch{
