@@ -4,8 +4,11 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from './App';
 import Summary from './Summary';
+import Sth from './Sth';
+import Transcripts from './Transcripts';
 import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   
   <BrowserRouter>
@@ -13,6 +16,8 @@ root.render(
  
     <Route exact path="/" element={<App />} />
     <Route path="/summary" element={<Summary />} />
+    <Route path="/transcripts" element={<Transcripts />} />
+    <Route path="/sth" element={<Sth />} />
   </Routes>
 </BrowserRouter>
 );

@@ -1,3 +1,23 @@
+
+.sum-page
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.content
+{
+    display: flex;
+}
+.speech-controller
+{
+    display: flex;
+    /* flex-direction: column; */
+}
+
 .data-block
 {
     display: flex;
@@ -90,8 +110,8 @@ button{
     position: relative;
     overflow: hidden;
     height: 3rem;
-    padding: 0 2rem;
-    border-radius: 1.5rem;
+    padding: 0 1rem;
+    border-radius: 1rem;
     background: #6a647c;
     background-size: 400%;
     color: #FFFFFF;

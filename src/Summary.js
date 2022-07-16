@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Summary.css";
 import { useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 function Summary() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [sum, setsum] = useState("Loading.......");
   const [tran, settran] = useState("Loading......");
   const [translation, settranslation] = useState("Loading......");
@@ -22,10 +24,7 @@ function Summary() {
 
     msg.pitch = rangevalp;
     msg.rate = rangeval;
-    //msg.voice = voices.filter(function(voice) { return voice.name == 'Microsoft Zira Desktop - English (United States)'; })[0];
     msg.text = sum;
-    //msg.voice = voices[3]
-    //msg.voice = voices.filter(function(voice) { return voice.name == 'Microsoft Zira Desktop - English (United States)'; })[0];
     window.speechSynthesis.speak(msg);
   };
 
@@ -39,11 +38,12 @@ function Summary() {
 
 
   const getData = async (result) => {
+
     const response = await fetch(
       `https://ytvideosummariser.herokuapp.com/api?url=${result}`
     );
     const data = await response.json();
-    //console.log(data);
+
     setsum(data.Message);
     settran(data.Transcripts);
     try{
@@ -62,14 +62,78 @@ function Summary() {
  
 
   getData(location.state.text);
-  
+  var link = location.state.text;
+  console.log(link);
 
+
+
+
+
+
+
+
+
+
+  
   return (
-    <div>
-      <div className="data-block">
-        <div className="labels">Summary</div>
-        <div class="container">
-          <div class="textarea_styles">
+    <div className="sum-page">
+
+      <div className = "btns">
+      <button className = "btn-sum"  onClick={() => navigate("/summary", { state: { text: {link} } })}>Get Summary</button>
+      <button className = "btn-trans" onClick={() => navigate("/transcripts", { state: { tran : tran  , link : link}})}>Get Transcripts</button>
+      </div>
+
+
+        <div> Summary </div>
+    <div className = "content">
+
+
+    <div className = "left-flex">
+
+      <div className = "rate-pitch">
+        <div id="rate-control">
+          <label for="rate">Rate:</label>
+          <input
+            id="typeinp"
+            type="range"
+            onChange={(event) => setRangeval(event.target.value)}
+            min="0.5"
+            max="3"
+            defaultValue="1.7"
+            step="0.1"
+            />
+        </div>
+        <div id="rate-control">
+          <label for="rate">Pitch:</label>
+          <input
+            id="typeinp"
+            type="range"
+            onChange={(event) => setRangevalp(event.target.value)}
+            min="0.5"
+            max="3"
+            defaultValue="2"
+            step="0.1"
+            />
+        </div >
+      </div>
+
+        <div className = "speech-controller">
+
+            <button className="btn" onClick={() => speechHandler(msg)}>
+              <span className="btn-content">Speak</span>
+            </button>
+
+            <button className="btn" onClick={() => speechPause()}>
+              <span className="btn-content">Pause</span>
+            </button>
+
+            <button className="btn" onClick={() => speechResume()}>
+              <span className="btn-content">Resume</span>
+            </button>
+
+        </div>
+        </div> 
+          <div>
             <textarea
               rows="50"
               cols="50"
@@ -77,56 +141,12 @@ function Summary() {
               value={sum}
               defaultValue="Loading...."
             >
-              {location.state.sum}
+              {sum}
             </textarea>
           </div>
-        </div>
-        <div className="labels">Transcripts</div>
-        <div class="container">
-          <div class="textarea_styles">
-            <textarea rows="50" cols="50" id="Transcripts" value={tran}>
-              {tran}
-            </textarea>
-          </div>
-        </div>
-        <br />
+      
       </div>
-      <div id="rate-control">
-        <label for="rate">Rate:</label>
-        <input
-          id="typeinp"
-          type="range"
-          onChange={(event) => setRangeval(event.target.value)}
-          min="0.5"
-          max="3"
-          defaultValue="1.7"
-          step="0.1"
-        />
       </div>
-      <div id="rate-control">
-        <label for="rate">Pitch:</label>
-        <input
-          id="typeinp"
-          type="range"
-          onChange={(event) => setRangevalp(event.target.value)}
-          min="0.5"
-          max="3"
-          defaultValue="2"
-          step="0.1"
-        />
-      </div>
-      <button className="btn" onClick={() => speechHandler(msg)}>
-        <span className="btn-content">Speak</span>
-      </button>
-
-      <button className="btn" onClick={() => speechPause()}>
-        <span className="btn-content">Pause</span>
-      </button>
-
-      <button className="btn" onClick={() => speechResume()}>
-        <span className="btn-content">Resume</span>
-      </button>
-    </div>
   );
 }
 

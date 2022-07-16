@@ -1,0 +1,14 @@
+
+.body-trans
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.summ-trans-container
+{
+
+}
