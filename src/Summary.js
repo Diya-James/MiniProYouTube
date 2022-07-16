@@ -76,14 +76,16 @@ function Summary() {
 
   
   return (
-    <div className="sum-page">
+    <React.Fragment>
 
-      <div className = "btns">
-      <button className = "btn-sum"  onClick={() => navigate("/summary", { state: { text: {link} } })}>Get Summary</button>
+
+    
+      <div className = "navbar" >
+      <button className = "btn-sum" class="active"  onClick={() => navigate("/summary", { state: { text: {link} } })}>Get Summary</button>
       <button className = "btn-trans" onClick={() => navigate("/transcripts", { state: { tran : tran  , link : link}})}>Get Transcripts</button>
       </div>
-
-
+      <br/><br/>
+      <div className="sum-page">
         <div> Summary </div>
     <div className = "content">
 
@@ -133,10 +135,10 @@ function Summary() {
 
         </div>
         </div> 
-          <div>
+          <div className="main">
             <textarea
-              rows="50"
-              cols="50"
+              rows="100"
+              cols="100"
               id="Transcripts"
               value={sum}
               defaultValue="Loading...."
@@ -147,6 +149,7 @@ function Summary() {
       
       </div>
       </div>
+      </React.Fragment>
   );
 }
 
