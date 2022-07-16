@@ -22,6 +22,24 @@ function Summary() {
   const [rangevalp, setRangevalp] = useState(2);
   const[selects , setSelects] = useState();
 
+  const getData = async (result) => {
+
+    const response = await fetch(
+      `https://ytvideosummariser.herokuapp.com/api?url=${result}`
+    );
+    const data = await response.json();
+
+    setsum(data.Message);
+    settran(data.Transcripts);
+  };
+
+  useEffect(() => {
+
+    getData(location.state.text);
+    
+  } ,[]);
+
+
   const msg = new SpeechSynthesisUtterance();
 
   const speechHandler = (msg) => {
@@ -48,31 +66,10 @@ function Summary() {
   };
 
 
-  const getData = async (result) => {
-
-    const response = await fetch(
-      `https://ytvideosummariser.herokuapp.com/api?url=${result}`
-    );
-    const data = await response.json();
-
-    setsum(data.Message);
-    settran(data.Transcripts);
-    // try{
-    //   const response1 = await fetch(
-    //     `https://yttranslation.herokuapp.com/api?dest=es&text=${sum}`
-    //   );
-    //   const data1 = await response1.json();
-    //   console.log(data1.Tranlated)
-    //   settranslation(data1.Translated)
-    // }
-    // catch{
-    //   console.error();
-    // }
-  };
 
  
 
-  getData(location.state.text);
+
   var link = location.state.text;
   console.log(link);
 
@@ -115,14 +112,6 @@ function Summary() {
 
 
   return (
-<<<<<<< HEAD
-    <div className="sum-page">
-      <div className = "btns">
-      <button className = "btn-sum"  onClick={() => navigate("/summary", { state: { text: {link} } })}>Get Summary</button>
-      <button className = "btn-trans" onClick={() => navigate("/transcripts", { state: { tran : tran  , link : link}})}>Get Transcripts</button>
-      </div>
-      <div> Summary </div>
-=======
     <React.Fragment>
 
 
@@ -131,10 +120,10 @@ function Summary() {
       <button className = "btn-sum" class="active"  onClick={() => navigate("/summary", { state: { text: {link} } })}>Get Summary</button>
       <button className = "btn-trans" onClick={() => navigate("/transcripts", { state: { tran : tran  , link : link}})}>Get Transcripts</button>
       </div>
+      
       <br/><br/>
       <div className="sum-page">
         <div> Summary </div>
->>>>>>> c6f811e4f20508ff8c4d683634ba48e4b758f521
     <div className = "content">
 
 
