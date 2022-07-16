@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Summary from "./Summary";
+import Particles from './components/Particle';
 
 function App() {
   const navigate = useNavigate();
@@ -34,11 +35,15 @@ function App() {
   // };
 
   return (
+    <React.Fragment>
+    <Particles/>
+    
     <div className="App">
       <h1 className="Heading">YouTube Video Summariser</h1>
 
       <div className="wrapper">
         <TextField
+          inputProps={{ style: { fontFamily: 'Arial', color: 'black'}}}
           className="textbox"
           id="outlined-basic"
           label="YouTube Link"
@@ -59,6 +64,8 @@ function App() {
         Get Summary
       </button>
     </div>
+    
+    </React.Fragment>
   );
 }
 

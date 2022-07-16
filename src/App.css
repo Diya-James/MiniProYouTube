@@ -101,5 +101,12 @@ input:invalid ~ .validation{opacity:1;
     display: inline-block;
     text-align: center;
     font-family: "sans-serif","Helvetica", "Arial" ;
-    color: #ee1f1f
+    color: #000000
+  }
+
+  .MuiFormLabel-root.Mui-focused {
+    color: rgb(0, 0, 0) !important;
+  }
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(0, 0, 0) !important;
   }

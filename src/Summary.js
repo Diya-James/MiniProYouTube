@@ -59,7 +59,7 @@ function Summary() {
     }
   };
 
-
+ 
 
   getData(location.state.text);
   
