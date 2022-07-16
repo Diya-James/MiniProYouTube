@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Summary.css";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
+
+
+
 
 function Summary() {
   const location = useLocation();
@@ -11,6 +20,8 @@ function Summary() {
   const [translation, settranslation] = useState("Loading......");
   const [rangeval, setRangeval] = useState(1.7);
   const [rangevalp, setRangevalp] = useState(2);
+  const[selects , setSelects] = useState();
+
   const msg = new SpeechSynthesisUtterance();
 
   const speechHandler = (msg) => {
@@ -46,17 +57,17 @@ function Summary() {
 
     setsum(data.Message);
     settran(data.Transcripts);
-    try{
-      const response1 = await fetch(
-        `https://yttranslation.herokuapp.com/api?dest=es&text=${sum}`
-      );
-      const data1 = await response1.json();
-      console.log(data1.Tranlated)
-      settranslation(data1.Translated)
-    }
-    catch{
-      console.error();
-    }
+    // try{
+    //   const response1 = await fetch(
+    //     `https://yttranslation.herokuapp.com/api?dest=es&text=${sum}`
+    //   );
+    //   const data1 = await response1.json();
+    //   console.log(data1.Tranlated)
+    //   settranslation(data1.Translated)
+    // }
+    // catch{
+    //   console.error();
+    // }
   };
 
  
@@ -65,26 +76,51 @@ function Summary() {
   var link = location.state.text;
   console.log(link);
 
+  const handleChange = () => {
+    console.log("Clicked !!");
+  }
+
+
+  const handleChangeCode = async(e) => {
+
+    var dict = {
+
+      "Chinese" : "zh-cn",
+      "Dutch" : "nl",
+      "Czech" : "cs",
+      "French" : "fr",
+    }
+
+    setSelects(e.target.value)
+    const value = e.target.value;
+    console.log(value);
+    console.log( dict[value]);
+    var code = dict[value];
+    try{
+      const response1 = await fetch(
+        `https://yttranslation.herokuapp.com/api?dest=${code}&text=${sum}`
+      );
+      const data1 = await response1.json();
+      console.log(data1.Tranlated)
+      settranslation(data1.Translated)
+      setsum(data1.Tranlated);
+    }
+    catch{
+      console.error();
+    }
 
 
 
+  }
 
 
-
-
-
-
-  
   return (
     <div className="sum-page">
-
       <div className = "btns">
       <button className = "btn-sum"  onClick={() => navigate("/summary", { state: { text: {link} } })}>Get Summary</button>
       <button className = "btn-trans" onClick={() => navigate("/transcripts", { state: { tran : tran  , link : link}})}>Get Transcripts</button>
       </div>
-
-
-        <div> Summary </div>
+      <div> Summary </div>
     <div className = "content">
 
 
@@ -131,7 +167,19 @@ function Summary() {
               <span className="btn-content">Resume</span>
             </button>
 
+            
         </div>
+
+            <select value = {selects} onChange = {handleChangeCode}>
+
+              <option></option>
+              <option>Chinese</option>
+              <option>Dutch</option>
+              <option>Czech</option>
+              <option>French</option>
+            
+            </select>
+
         </div> 
           <div>
             <textarea
