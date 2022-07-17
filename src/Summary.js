@@ -36,7 +36,7 @@ function Summary() {
   useEffect(() => {
 
     getData(location.state.text);
-    
+
   } ,[]);
 
 
@@ -86,7 +86,47 @@ function Summary() {
       "Dutch" : "nl",
       "Czech" : "cs",
       "French" : "fr",
-    }
+      "English" : "en",
+      "Arabic" : "ar",
+      "German" : "de",
+      "Greek" : "el",
+      "Gujarati" : "gu",
+      "Hindi" : "hi",
+      "Japanese" : "ja",
+      "Indonesian" : "id",
+      "Irish" :"ga",
+      "Italian" : "it",
+      "Kannada" : "kn",
+      "Korean" : "ko",
+      "Latin" : "la",
+      "Lithuanian" : "lt",
+      "Malay" : "ms",
+      "Malayalam" : "ml",
+      "Marathi" : "mr",
+      "Mangolian" : "mn",
+      "Nepali" : "ne",
+      "Odia" : "or",
+      "Persian" : "fa",
+      "Polish" : "pl",
+      "Portuguese" : "pt",
+      "Punjabi" : "pa",
+      "Romanian" : "ro",
+      "Russian" : "ru",
+      "Serbian" : "sr",
+      "Spanish" : "es",
+      "Swedish" : "sv",
+      "Tamil" : "ta",
+      "Telugu" : "te",
+      "Thai" : "th",
+      "Turkish" : "tr",
+      "Ukrainian" : "uk",
+      "Urdu" : "ur",
+      "Uzbek" : "uz",
+      "Viatnamese" : "vi", 
+      "Albanian" : "sq",
+      "Bosnian" : "bs",
+      "Bulagarian" : "bg",
+  }
 
     setSelects(e.target.value)
     const value = e.target.value;
@@ -175,11 +215,36 @@ function Summary() {
 
             <select value = {selects} onChange = {handleChangeCode}>
 
+
+            {/* "Vietnamese" : "vi",
+          "Spanish" : "es",
+          "Russian" : "ru",
+          "Portuguese" : "pt",
+          "Myanmar" : "my",
+          "Marathi" : "mr",
+          "Latin" : "la",
+          "Italian" : "it",
+          "Indonesian" : "id",
+          "Hebrew" : "he",
+          "Greek" : "el" */}
+
+
               <option></option>
               <option>Chinese</option>
               <option>Dutch</option>
               <option>Czech</option>
               <option>French</option>
+              <option>Vietnamese</option>
+              <option>Spanish</option>
+              <option>Russian</option>
+              <option>Myanmar</option>
+              <option>Portuguese</option>
+              <option>Marathi</option>
+              <option>Latin</option>
+              <option>Italian</option>
+              <option>Indonesian</option>
+              <option>Hebrew</option>
+              <option>Greek</option>
             
             </select>
 
