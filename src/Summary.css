@@ -1,3 +1,4 @@
+
 .navbar {
     overflow: hidden;
     top: 0;
@@ -6,6 +7,7 @@
     justify-content: center;
   }
   
+
   /* Style the links inside the navigation bar */
   .navbar button {
     height:3rem;
@@ -26,10 +28,14 @@
 
   }
   
+
+
   /* Change the color of links on hover */
   .navbar button:hover {
     background-position: 185% 50%;
   }
+
+
   
   /* Add a color to the active/current link */
   .navbar button.active {
@@ -54,7 +60,8 @@
     display: flex;
     width: inherit;
     /* height: 600px; */
-  }
+}
+
 .content
 {
     display: flex;
@@ -64,6 +71,13 @@
     display: flex;
     /* flex-direction: column; */
 }
+
+
+textarea
+{
+    overflow: auto;
+}
+
 
 .data-block
 {
@@ -100,6 +114,11 @@ textarea{
     padding:2px;
     font-size:16px;
     line-height: 1.4;
+    overflow-x: hidden;
+    padding:1rem;
+    margin: 1 em;
+    border:1px solid black;
+    border-radius: 20px;
     
 }
 
@@ -149,17 +168,19 @@ textarea::-web-kit-scrollbar-track{
 textarea::-web-kit-scrollbar-thumb{
     background-color: #0B8FF9; 
 }
+
 button{
     
     margin :5px;
 }
+
 .btn{
     position: relative;
     overflow: hidden;
     height: 3rem;
     padding: 0 1rem;
     border-radius: 1rem;
-    background: #756b93;
+    background: #7255c7;
     background-size: 400%;
     color: #FFFFFF;
     
@@ -191,6 +212,41 @@ button{
     transition: all 0.475s;
 
 
+}
+
+
+@media all and (max-width : 700px)
+{
+    .btn
+    {
+        background: #242F9B;
+        border: 1px solid #646FD4;
+        color:#9BA3EB;
+        font-size:larger;
+    }
+
+
+    .content
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .speed-btn-trans
+    {
+        display: flex;
+        align-items: center;
+        
+    }
+
+
+    textarea
+    {
+        overflow-x: hidden;
+    }
 }
 
 
