@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import TextareaAutosize from 'react-textarea-autosize';
 import "./Summary.css";
 import { useLocation } from "react-router-dom";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-
-
+import {useNavigate } from "react-router-dom";
 
 
 function Summary() {
@@ -117,7 +110,8 @@ function Summary() {
       Bosnian: "bs",
       Bulagarian: "bg",
     };
-
+      
+    settranslation("Loading...");
     setSelects(e.target.value);
     const value = e.target.value;
     console.log(value);
@@ -155,7 +149,7 @@ function Summary() {
           <div className="main">
                <TextareaAutosize 
                     rows="50"
-                    cols="80"
+                    cols="70"
                     id="Summary"
                     value={sum}
                     defaultValue="Loading...."
