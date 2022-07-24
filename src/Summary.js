@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
-import TextareaAutosize from 'react-textarea-autosize';
+import TextareaAutosize from "react-textarea-autosize";
 import "./Summary.css";
 import { useLocation } from "react-router-dom";
+<<<<<<< HEAD
 import {useNavigate } from "react-router-dom";
 
+=======
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+>>>>>>> 0737f461bf1116af3f797812f57ee74ae270b852
 
 function Summary() {
   const location = useLocation();
@@ -13,8 +22,8 @@ function Summary() {
   const [translation, settranslation] = useState("Loading......");
   const [rangeval, setRangeval] = useState(1.7);
   const [rangevalp, setRangevalp] = useState(2);
-  const[selects , setSelects] = useState();
-  const[code , setcode] = useState('en');
+  const [selects, setSelects] = useState();
+  const [code, setcode] = useState("en");
 
   const getData = async (result) => {
     const response = await fetch(
@@ -115,9 +124,9 @@ function Summary() {
     setSelects(e.target.value);
     const value = e.target.value;
     console.log(value);
-    console.log( dict[value]);
+    console.log(dict[value]);
     var curr_code = dict[value];
-    try{
+    try {
       const response1 = await fetch(
         `https://yttranslation.herokuapp.com/api?dest=${curr_code}&src=${code}&text=${sum}`
       );
@@ -131,22 +140,31 @@ function Summary() {
     }
   };
 
-
-
   return (
-    <div className= "sum-page">
-
-
-    
-      <div className = "navbar" >
-      <button className = "btn-sum" class="active"  onClick={() => navigate("/summary", { state: { text: {link} } })}>Get Summary</button>
-      <button className = "btn-trans" onClick={() => navigate("/transcripts", { state: { tran : tran  , link : link}})}>Get Transcripts</button>
+    <div className="sum-page">
+      <div className="navbar">
+        <button
+          className="btn-sum"
+          class="active"
+          onClick={() => navigate("/summary", { state: { text: { link } } })}
+        >
+          Get Summary
+        </button>
+        <button
+          className="btn-trans"
+          onClick={() =>
+            navigate("/transcripts", { state: { tran: tran, link: link } })
+          }
+        >
+          Get Transcripts
+        </button>
       </div>
-      
+
       <div className="sum-page">
         <div> Summary </div>
-      <div className = "content">
+        <div className="content">
           <div className="main">
+<<<<<<< HEAD
                <TextareaAutosize 
                     rows="50"
                     cols="70"
@@ -155,78 +173,112 @@ function Summary() {
                     defaultValue="Loading...."
                   />
                     
+=======
+            <TextareaAutosize
+              rows="50"
+              cols="80"
+              id="Summary"
+              value={sum}
+              defaultValue="Loading...."
+            />
+>>>>>>> 0737f461bf1116af3f797812f57ee74ae270b852
           </div>
 
-    <div className = "speed-btn-trans">
+          <div className="speed-btn-trans">
+            <div className="rate-btn">
+              <div id="rate-control">
+                <label for="rate">Rate:</label>
+                <input
+                  id="typeinp"
+                  type="range"
+                  onChange={(event) => setRangeval(event.target.value)}
+                  min="0.5"
+                  max="3"
+                  defaultValue="1.7"
+                  step="0.1"
+                />
+              </div>
+              <div id="rate-control">
+                <label for="rate">Pitch:</label>
+                <input
+                  id="typeinp"
+                  type="range"
+                  onChange={(event) => setRangevalp(event.target.value)}
+                  min="0.5"
+                  max="3"
+                  defaultValue="2"
+                  step="0.1"
+                />
+              </div>
 
-      <div className = "rate-btn">
-          <div id="rate-control">
-            <label for="rate">Rate:</label>
-            <input
-              id="typeinp"
-              type="range"
-              onChange={(event) => setRangeval(event.target.value)}
-              min="0.5"
-              max="3"
-              defaultValue="1.7"
-              step="0.1"
-              />
-          </div>
-          <div id="rate-control">
-            <label for="rate">Pitch:</label>
-            <input
-              id="typeinp"
-              type="range"
-              onChange={(event) => setRangevalp(event.target.value)}
-              min="0.5"
-              max="3"
-              defaultValue="2"
-              step="0.1"
-              />
-          </div >
+              <div className="speech-controller">
+                <button className="btn" onClick={() => speechHandler(msg)}>
+                  <span className="btn-content">Speak</span>
+                </button>
 
-          <div className = "speech-controller">
+                <button className="btn" onClick={() => speechPause()}>
+                  <span className="btn-content">Pause</span>
+                </button>
 
-              <button className="btn" onClick={() => speechHandler(msg)}>
-                <span className="btn-content">Speak</span>
-              </button>
+                <button className="btn" onClick={() => speechResume()}>
+                  <span className="btn-content">Resume</span>
+                </button>
+              </div>
+            </div>
 
-              <button className="btn" onClick={() => speechPause()}>
-                <span className="btn-content">Pause</span>
-              </button>
-
-              <button className="btn" onClick={() => speechResume()}>
-                <span className="btn-content">Resume</span>
-              </button>
-      
+            <div className="trans">
+              <select value={selects} onChange={handleChangeCode}>
+                <option></option>
+                <option>Chinese</option>
+                <option>Dutch</option>
+                <option>Czech</option>
+                <option>French</option>
+                <option>English</option>
+                <option>Arabic</option>
+                <option>German</option>
+                <option>Greek</option>
+                <option>Gujarati</option>
+                <option>Hindi</option>
+                <option>Japanese</option>
+                <option>Indonesian</option>
+                <option>Irish</option>
+                <option>Italian</option>
+                <option>Kannada</option>
+                <option>Korean</option>
+                <option>Latin</option>
+                <option>Lithuanian</option>
+                <option>Malay</option>
+                <option>Malayalam</option>
+                <option>Marathi</option>
+                <option>Mangolian</option>
+                <option>Nepali</option>
+                <option>Odia</option>
+                <option>Persian</option>
+                <option>Polish</option>
+                <option>Portuguese</option>
+                <option>Punjabi</option>
+                <option>Romanian</option>
+                <option>Russian</option>
+                <option>Serbian</option>
+                <option>Spanish</option>
+                <option>Swedish</option>
+                <option>Tamil</option>
+                <option>Telugu</option>
+                <option>Thai</option>
+                <option>Turkish</option>
+                <option>Ukranian</option>
+                <option>Urdu</option>
+                <option>Uzbek</option>
+                <option>Viatnamese</option>
+                <option>Albanian</option>
+                <option>Bosnian</option>
+                <option>Bulagarian</option>
+              </select>
+            </div>
           </div>
         </div>
-
-
-          <div className="trans">
-
-            <select  value = {selects} onChange = {handleChangeCode}>
-              <option></option>
-              <option>Chinese</option>
-              <option>Dutch</option>
-              <option>Czech</option>
-              <option>French</option>
-              <option>English</option>
-              <option>Arabic</option>
-              <option>German</option>
-              <option>Greek</option>
-              <option>English</option>
-
-            </select>
-
-          </div>
-      
-        </div> 
-
-      
       </div>
-      </div>
-      </div>
+    </div>
   );
 }
 
