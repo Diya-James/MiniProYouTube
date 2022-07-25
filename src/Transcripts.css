@@ -15,8 +15,21 @@
     align-items: center;
     justify-content: center;
 }
-  
+  textarea{
+    width: 800px;
+    /* height: 800px; */
+  }
+.hd{
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom:8px;
+  margin-top: 5px;
+  width: 96%;
+  letter-spacing : 1.2px;  
+  padding-left: 2px; 
 
+}
   /* Style the links inside the navigation bar */
   .navbar button {
     height:3rem;
