@@ -3,6 +3,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import "./Summary.css";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { BsWhatsapp } from "react-icons/bs";
 
 function Summary() {
   const location = useLocation();
@@ -43,9 +44,8 @@ function Summary() {
     element.click();
   };
   const abc = () => {
-    window.open("https://api.whatsapp.com/send?text=" + sum,
-    '_blank' )
-  }
+    window.open("https://api.whatsapp.com/send?text=" + sum, "_blank");
+  };
   const speechHandler = (msg) => {
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
@@ -225,7 +225,6 @@ function Summary() {
                 <br />
               </div>
             </div>
-
             <br />
             <div className="trans">
               <span> Translate to : </span>
@@ -282,9 +281,12 @@ function Summary() {
                 <option>Bulagarian</option>
               </select>
             </div>
-            <button onClick={abc}> Share on WhatsApp </button>
+            Share :
+            <button className="whatsapp" onClick={abc}>
+              {" "}
+              <BsWhatsapp />{" "}
+            </button>
           </div>
-          
         </div>
       </div>
     </div>
