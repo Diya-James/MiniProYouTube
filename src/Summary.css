@@ -333,3 +333,17 @@ select{
     padding : 8px;
 }
 
+.back{
+    font-family: "Roboto", sans-serif;
+    font-size : 18px;
+    /* font-weight : bold; */
+    background : #04ab4a;
+    width :auto;
+    padding : 8px;
+    text-align : center;
+    text-decoration: none;
+    /* text-transform: uppercase; */
+    color : #fff;
+    border-radius: 5px;
+    cursor : pointer;
+}

@@ -3,6 +3,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import "./Summary.css";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { BsWhatsapp } from "react-icons/bs";
 
 function Summary() {
@@ -147,6 +148,10 @@ function Summary() {
   return (
     <div className="sum-page">
       <div className="navbar">
+        <button className="back">
+          {" "}
+          <BsFillArrowLeftSquareFill />
+        </button>
         <button
           className="btn-sum"
           class="active"
