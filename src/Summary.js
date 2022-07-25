@@ -32,6 +32,17 @@ function Summary() {
 
   const msg = new SpeechSynthesisUtterance();
 
+  const downloadTxtFile = () => {
+    const element = document.createElement("a");
+    const file = new Blob([sum], {
+      type: "text/plain"
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = "myFile.txt";
+    document.body.appendChild(element);
+    element.click();
+  };
+
   const speechHandler = (msg) => {
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
@@ -109,6 +120,9 @@ function Summary() {
       Bosnian: "bs",
       Bulagarian: "bg",
     };
+
+  
+  
 
     settranslation("Loading...");
     setSelects(e.target.value);
@@ -189,7 +203,7 @@ function Summary() {
                   step="0.1"
                 />
               </div>
-
+              
               <div className="speech-controller">
                 <button className="btn" onClick={() => speechHandler(msg)}>
                   <span className="btn-content">Speak</span>
@@ -254,6 +268,7 @@ function Summary() {
                 <option>Bulagarian</option>
               </select>
             </div>
+            <button className="btn" onClick={downloadTxtFile}>Download </button>
           </div>
         </div>
       </div>
