@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Summary from "./Summary";
 import Particles from './components/Particle';
-
+import logo from './screen.gif'
 function App() {
   const navigate = useNavigate();
   const [text, settext] = useState("");
@@ -39,6 +39,8 @@ function App() {
     <Particles/>
     
     <div className="App">
+    
+    <br/>
       <h1 className="Heading">YouTube Video Summariser</h1>
 
       <div className="wrapper">
@@ -63,6 +65,8 @@ function App() {
         {" "}
         Get Summary
       </button>
+      <br/>
+      <img src={logo} alt="loading..." height={490} />
     </div>
     
     </React.Fragment>

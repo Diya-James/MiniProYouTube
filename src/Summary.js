@@ -40,7 +40,7 @@ function Summary() {
       type: "text/plain",
     });
     element.href = URL.createObjectURL(file);
-    element.download = "myFile.txt";
+    element.download = "Summary.txt";
     document.body.appendChild(element);
     element.click();
   };
@@ -150,7 +150,7 @@ function Summary() {
       <div className="navbar">
         <button className="back">
           {" "}
-          <BsFillArrowLeftSquareFill />
+          <BsFillArrowLeftSquareFill onClick={() => navigate("/") }/>
         </button>
         <button
           className="btn-sum"
