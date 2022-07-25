@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import "./Transcripts.css";
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 
 function Transcripts() {
   const location = useLocation();
@@ -12,6 +13,10 @@ function Transcripts() {
   return (
     <div className="body-trans">
       <div className="navbar">
+        <button className="back">
+          {" "}
+          <BsFillArrowLeftSquareFill onClick={() => navigate("/")} />
+        </button>
         <button
           className="btn-sum"
           onClick={() => navigate("/summary", { state: { text: link } })}

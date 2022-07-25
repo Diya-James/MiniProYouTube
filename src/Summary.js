@@ -150,7 +150,7 @@ function Summary() {
       <div className="navbar">
         <button className="back">
           {" "}
-          <BsFillArrowLeftSquareFill onClick={() => navigate("/") }/>
+          <BsFillArrowLeftSquareFill onClick={() => navigate("/")} />
         </button>
         <button
           className="btn-sum"
@@ -187,7 +187,7 @@ function Summary() {
               <br />
               <br />
               <div id="rate-control">
-                <label for="rate">Rate:</label>
+                <label for="rate">Rate : </label>
                 <input
                   id="typeinp"
                   type="range"
@@ -200,7 +200,7 @@ function Summary() {
               </div>
               <br />
               <div id="rate-control">
-                <label for="rate">Pitch:</label>
+                <label for="rate">Pitch : </label>
                 <input
                   id="typeinp"
                   type="range"
