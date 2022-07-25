@@ -42,7 +42,10 @@ function Summary() {
     document.body.appendChild(element);
     element.click();
   };
-
+  const abc = () => {
+    window.open("https://api.whatsapp.com/send?text=" + sum,
+    '_blank' )
+  }
   const speechHandler = (msg) => {
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
@@ -279,7 +282,9 @@ function Summary() {
                 <option>Bulagarian</option>
               </select>
             </div>
+            <button onClick={abc}> Share on WhatsApp </button>
           </div>
+          
         </div>
       </div>
     </div>
