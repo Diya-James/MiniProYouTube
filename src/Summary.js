@@ -35,7 +35,7 @@ function Summary() {
   const downloadTxtFile = () => {
     const element = document.createElement("a");
     const file = new Blob([sum], {
-      type: "text/plain"
+      type: "text/plain",
     });
     element.href = URL.createObjectURL(file);
     element.download = "myFile.txt";
@@ -121,9 +121,6 @@ function Summary() {
       Bulagarian: "bg",
     };
 
-  
-  
-
     settranslation("Loading...");
     setSelects(e.target.value);
     const value = e.target.value;
@@ -179,6 +176,8 @@ function Summary() {
 
           <div className="speed-btn-trans">
             <div className="rate-btn">
+              <br />
+              <br />
               <div id="rate-control">
                 <label for="rate">Rate:</label>
                 <input
@@ -191,6 +190,7 @@ function Summary() {
                   step="0.1"
                 />
               </div>
+              <br />
               <div id="rate-control">
                 <label for="rate">Pitch:</label>
                 <input
@@ -203,24 +203,35 @@ function Summary() {
                   step="0.1"
                 />
               </div>
-              
+              <br />
               <div className="speech-controller">
                 <button className="btn" onClick={() => speechHandler(msg)}>
                   <span className="btn-content">Speak</span>
                 </button>
-
+                <br />
                 <button className="btn" onClick={() => speechPause()}>
                   <span className="btn-content">Pause</span>
                 </button>
-
+                <br />
                 <button className="btn" onClick={() => speechResume()}>
                   <span className="btn-content">Resume</span>
                 </button>
+                <button className="btn-dload" onClick={downloadTxtFile}>
+                  Download{" "}
+                </button>
+                <br />
               </div>
             </div>
 
+            <br />
             <div className="trans">
-              <select value={selects} onChange={handleChangeCode}>
+              <span> Translate to : </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <select
+                className="tt"
+                value={selects}
+                onChange={handleChangeCode}
+              >
                 <option></option>
                 <option>Chinese</option>
                 <option>Dutch</option>
@@ -268,7 +279,6 @@ function Summary() {
                 <option>Bulagarian</option>
               </select>
             </div>
-            <button className="btn" onClick={downloadTxtFile}>Download </button>
           </div>
         </div>
       </div>
